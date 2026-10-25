@@ -93,8 +93,9 @@ button {
 }
 
 .logo-mark {
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   width: 42px;
   height: 42px;
@@ -108,9 +109,6 @@ button {
   box-shadow: 0 0 22px var(--shadow);
 }
 
-.logo-dot {
-  color: var(--purple);
-}
 
 .logo-name {
   font-size: 12px;
