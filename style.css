@@ -534,3 +534,80 @@ a:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+/* Live Clock & System Status */
+.live-status {
+  padding-top: 55px;
+}
+
+.clock-card {
+  margin-top: 24px;
+  padding: clamp(22px, 5vw, 38px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 15% 0%, var(--shadow), transparent 55%),
+    var(--panel);
+  box-shadow: 0 12px 40px var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.clock-label {
+  margin: 0;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.clock-time {
+  margin-top: 10px;
+  color: var(--text);
+  font-size: clamp(42px, 10vw, 76px);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 28px var(--shadow);
+}
+
+.clock-date {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.system-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.system-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.system-item span {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.system-item strong {
+  color: var(--cyan);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .system-details {
+    grid-template-columns: 1fr;
+  }
+}

@@ -97,3 +97,50 @@ if (themeToggle) {
 }
 
 console.log("Velvyn Protocol website is running!");
+// Live Clock & System Status
+const liveTime = document.getElementById("live-time");
+const liveDate = document.getElementById("live-date");
+const liveTimezone = document.getElementById("live-timezone");
+const connectionStatus = document.getElementById("connection-status");
+
+function updateLiveClock() {
+  const now = new Date();
+
+  if (liveTime) {
+    liveTime.textContent = new Intl.DateTimeFormat(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false
+    }).format(now);
+  }
+
+  if (liveDate) {
+    liveDate.textContent = new Intl.DateTimeFormat(undefined, {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }).format(now);
+  }
+}
+
+if (liveTimezone) {
+  liveTimezone.textContent =
+    Intl.DateTimeFormat().resolvedOptions().timeZone || "Unavailable";
+}
+
+function updateConnectionStatus() {
+  if (connectionStatus) {
+    const online = navigator.onLine;
+    connectionStatus.textContent = online ? "ONLINE" : "OFFLINE";
+    connectionStatus.style.color = online ? "var(--cyan)" : "#ff6b81";
+  }
+}
+
+updateLiveClock();
+setInterval(updateLiveClock, 1000);
+
+updateConnectionStatus();
+window.addEventListener("online", updateConnectionStatus);
+window.addEventListener("offline", updateConnectionStatus);
